@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const AuthContext = createContext();
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api',
 });
 
 export const AuthProvider = ({ children }) => {

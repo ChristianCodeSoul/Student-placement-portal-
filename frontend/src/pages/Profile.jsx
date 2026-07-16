@@ -111,7 +111,7 @@ const Profile = () => {
     Puducherry: ['Pondicherry University']
   };
 
-  const api = axios.create({ baseURL: 'http://localhost:5000/api' });
+  const api = axios.create({ baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api' });
   const token = localStorage.getItem('token');
   if (token) api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
@@ -119,7 +119,7 @@ const Profile = () => {
     if (!url) return '';
     if (url.startsWith('http')) return url;
     // handle backend-relative uploads like '/uploads/..'
-    const backendBase = api.defaults.baseURL.replace('/api', '');
+    const backendBase = api.defaults.baseURL.replace(/\/api\/?$/, '');
     if (url.startsWith('/uploads/')) return `${backendBase}${url}`;
     return url;
   };
