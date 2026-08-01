@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const AuthContext = createContext();
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE || 'http://localhost:5000/api',
+  baseURL: import.meta.env.VITE_API_BASE || 'https://student-placement-portal-z6x3.onrender.com/api',,
 });
 
 export const AuthProvider = ({ children }) => {
