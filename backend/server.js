@@ -55,8 +55,8 @@ const startServer = async () => {
     console.log('Starting backend - attempting MongoDB connection to:', process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/student-placement-portal');
     await connectDB();
     await seedJobs();
-    app.listen(PORT, () => {
-      console.log(`Backend running on http://localhost:${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Backend running on port ${PORT}`);
     });
   } catch (error) {
     console.error('Failed to start server', error);
